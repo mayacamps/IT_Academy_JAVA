@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Sprint1/S1T1_Inheritance_Polymorphism/S1T1_Inheritance_Polymorphism.iml" filepath="$PROJECT_DIR$/Sprint1/S1T1_Inheritance_Polymorphism/S1T1_Inheritance_Polymorphism.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sprint1/S1T2_Exceptions/S1T2_Exceptions.iml" filepath="$PROJECT_DIR$/Sprint1/S1T2_Exceptions/S1T2_Exceptions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sprint1/S1T3_Collections/S1T3_Collections.iml" filepath="$PROJECT_DIR$/Sprint1/S1T3_Collections/S1T3_Collections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sprint1/S1T5_JavaUtils/S1T5_JavaUtils.iml" filepath="$PROJECT_DIR$/Sprint1/S1T5_JavaUtils/S1T5_JavaUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sprint1/Sprint1.iml" filepath="$PROJECT_DIR$/Sprint1/Sprint1.iml" />
     </modules>
   </component>
