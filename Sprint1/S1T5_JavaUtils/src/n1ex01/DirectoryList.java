@@ -19,14 +19,14 @@ public class DirectoryList {
     }
 
     public void getListContent(String path){
-        File file = new File(path);
+        File dir = new File(path);
 
-        if (!file.exists() || !file.isDirectory()){
+        if (!dir.exists() || !dir.isDirectory()){
             System.out.println("Path given is not directory.");
             return;
         }
 
-        String [] content = file.list();
+        String [] content = dir.list();
 
         if (content.length == 0){
             System.out.println("Directory is empty.");
