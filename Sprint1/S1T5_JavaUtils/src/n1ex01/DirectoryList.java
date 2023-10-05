@@ -1,6 +1,7 @@
 package n1ex01;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DirectoryList {
@@ -30,6 +31,7 @@ public class DirectoryList {
         if (content.length == 0){
             System.out.println("Directory is empty.");
         } else{
+            Arrays.sort(content);
             for (String s : content) {
                 System.out.println(s);
             }
