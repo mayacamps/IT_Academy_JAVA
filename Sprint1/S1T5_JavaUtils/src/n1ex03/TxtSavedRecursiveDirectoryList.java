@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class TxtSavedRecursiveDirectoryList {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     static int countLoop  = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         File dir;
@@ -55,14 +58,19 @@ public class TxtSavedRecursiveDirectoryList {
                 }
                 if (s.isDirectory()) {
                     countLoop++;
-                    writer.write("(D)" + s.getName() + "\n");
+                    writer.write("(D)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
                     getRecursiveTxtListContent(s, "\t", writer);
                 } else {
-                    writer.write("(F)" + s.getName() + "\n");
+                    writer.write("(F)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
                 }
             }
 
         }
+    }
+
+    public static String getModDate(File file){
+        long datetime = file.lastModified();
+        return dateFormat.format(datetime);
     }
 }
 
