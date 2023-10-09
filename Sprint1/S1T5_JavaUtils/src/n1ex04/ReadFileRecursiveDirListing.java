@@ -80,10 +80,10 @@ public class ReadFileRecursiveDirListing {
         try (BufferedReader reader = Files.newBufferedReader(s.toPath(), charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
-                writer.write(line + "\n");
+                System.out.println(line);
             }
         } catch (IOException x) {
-            System.err.format("IOException: %s%n", x.getMessage());
+            System.err.format("IOException: " + x.getMessage());
         }
     }
 }
