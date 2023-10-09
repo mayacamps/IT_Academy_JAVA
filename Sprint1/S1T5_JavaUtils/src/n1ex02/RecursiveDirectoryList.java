@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class RecursiveDirectoryList {
     public static void main(String[] args) {
+
+        new RecursiveDirectoryList().getRecursiveListContent();
+    }
+
+    public void getRecursiveListContent(){
         Scanner sc = new Scanner(System.in);
         String path;
 
@@ -14,10 +19,6 @@ public class RecursiveDirectoryList {
                 "Please introduce the directory's path: ");
         path = sc.nextLine();
 
-        new RecursiveDirectoryList().getRecursiveListContent(path);
-    }
-
-    public void getRecursiveListContent(String path){
         File dir = new File(path);
 
         if (!dir.exists() || !dir.isDirectory()){
@@ -25,64 +26,25 @@ public class RecursiveDirectoryList {
             return;
         }
 
-        boolean thereIsFolder = false;
-        do {
-            File [] content = dir.listFiles();
-            if (content.length == 0){
-                System.out.println("Directory is empty.");
-            } else{
-                Arrays.sort(content);
-
-                for (File s : content) {
-                    if (s.isDirectory()) {
-                        thereIsFolder = true;
-                        System.out.println(s.getName() + "(D)");
-
-                        File[] folder = s.listFiles();
-                        for (File a : folder) {
-                            if (a.isDirectory()) {
-                                System.out.println("\t" + a.getName() + "(D)");
-                            } else {
-                                System.out.println("\t" + a.getName() + "(F)");
-                            }
-                        }
-                    } else {
-                        System.out.println(s.getName() + "(F)");
-                    }
+        // LOOP TO REPEAT ID line36 executes
+        File [] content = dir.listFiles();
+        if (content.length == 0){
+            System.out.println("Directory is empty.");
+        } else {
+            Arrays.sort(content);
+            for (File s : content) {
+                if (s.isDirectory()) {
+                    System.out.println("(D)" + s.getName());
+                } else {
+                    System.out.println("(F)" + s.getName());
                 }
-//                File[] folder = s.listFiles();
-//                for (File a : folder) {
+            }
 
-                }
-
-        } while (!thereIsFolder);
+        }
 
 
-//        File [] content = dir.listFiles();
-//
-//        if (content.length == 0){
-//            System.out.println("Directory is empty.");
-//        } else{
-//            Arrays.sort(content);
-//            for (File s : content) {
-//                if (s.isDirectory()) {
-//                    thereIsFolder = true;
-//                    System.out.println(s.getName() + "(D)");
-//
-//                    File[] folder = s.listFiles();
-//                    for (File a : folder) {
-//                        if (a.isDirectory()) {
-//                            System.out.println("\t" + a.getName() + "(D)");
-//                        } else {
-//                            System.out.println("\t" + a.getName() + "(F)");
-//                        }
-//                    }
-//                } else {
-//                    System.out.println(s.getName() + "(F)");
-//                }
-//            }
 
-            
+
     }
 }
 
