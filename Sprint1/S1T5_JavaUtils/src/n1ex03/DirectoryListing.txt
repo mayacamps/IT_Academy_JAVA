@@ -1,6 +1,12 @@
-(D)ada
-	(D)asas
-		(F)aa.txt
-		(F)fdgsdh.txt
-(F)aghg.txt
-(D)Hola
+(F)aghg.txt Last modification: 2023-10-05 17:58:02
+(D)lvl1-1 Last modification: 2023-10-09 10:58:32
+	(F)fdgsdh.txt Last modification: 2023-10-05 17:57:55
+	(D)lvl2 Last modification: 2023-10-09 12:27:47
+		(D)jlvl3f Last modification: 2023-10-09 12:28:01
+			(F)lvl4file.txt Last modification: 2023-10-05 17:57:55
+(F)lvl3file.txt Last modification: 2023-10-05 17:57:55
+(D)lvl1-2 Last modification: 2023-10-08 19:43:51
+(D)lvl1-3 Last modification: 2023-10-09 12:30:56
+	(D)lvl2-dwd Last modification: 2023-10-09 12:30:13
+		(F)lvl3aghg.txt Last modification: 2023-10-05 17:58:02
+(F)lvl2aaa.txt Last modification: 2023-10-05 17:58:02

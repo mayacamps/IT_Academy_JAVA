@@ -1,16 +1,14 @@
-package n1ex03;
+package n1ex04;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class TxtSavedRecursiveDirectoryList {
+public class ReadFileRecursiveListing {
     static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    static int dirLev = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -30,7 +28,7 @@ public class TxtSavedRecursiveDirectoryList {
             } else {
                 isDir = true;
                 try {
-                    savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex03";
+                    savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex04";
 
                     PrintWriter writer = new PrintWriter(new FileWriter(savePath + "\\DirectoryListing.txt"));
                     System.out.println("Saving directory content listing in txt file...");
@@ -53,25 +51,34 @@ public class TxtSavedRecursiveDirectoryList {
         } else {
             Arrays.sort(content);
             for (File s : content) {
-                for (int i = 0; i < dirLev; i++){
-                    writer.write(tab);
-                }
+                writer.write(tab);
                 if (s.isDirectory()) {
-                    dirLev++;
-                    writer.write(String.format("%s %s" , "(D)" + s.getName(), "Last modification: " + getModDate(s) + "\n"));
+                    writer.write("(D)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
                     getRecursiveTxtListContent(s, "\t", writer);
-
                 } else {
-                    writer.write(String.format("%s %s" , "(F)" + s.getName(), "Last modification: " + getModDate(s) + "\n"));
+                    writer.write("(F)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
+                    readFile(s);
                 }
             }
-            dirLev = 0;
+
         }
     }
 
     public static String getModDate(File file){
         long datetime = file.lastModified();
         return dateFormat.format(datetime);
+    }
+
+    public static void readFile(File file){
+        Charset charset = Charset.forName("US-ASCII");
+        try (BufferedReader reader = Files.newBufferedReader(file.toPath(), charset)) {
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
     }
 }
 
