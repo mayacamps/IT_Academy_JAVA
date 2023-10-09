@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TxtSavedRecursiveDirectoryList {
+    static int countLoop  = 0;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         File dir;
@@ -49,8 +50,11 @@ public class TxtSavedRecursiveDirectoryList {
         } else {
             Arrays.sort(content);
             for (File s : content) {
-                writer.write(tab);
+                for (int i = 0; i < countLoop; i++){
+                    writer.write(tab);
+                }
                 if (s.isDirectory()) {
+                    countLoop++;
                     writer.write("(D)" + s.getName() + "\n");
                     getRecursiveTxtListContent(s, "\t", writer);
                 } else {

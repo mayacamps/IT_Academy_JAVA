@@ -1,17 +1,15 @@
 package n1ex02;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class RecursiveDirectoryList {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public static void main(String[] args) {
 
-        new RecursiveDirectoryList().getRecursiveListContent(getDirectory(),"");
-    }
-
-    public static File getDirectory() {
         Scanner sc = new Scanner(System.in);
         File dir;
         String path;
@@ -28,13 +26,12 @@ public class RecursiveDirectoryList {
                 System.out.println("Path given is not directory.");
             } else {
                 isDir = true;
+                getRecursiveListContent(dir, "");
             }
         } while (!isDir);
-
-        return dir;
     }
 
-    public void getRecursiveListContent(File dir, String tab){
+    public static void getRecursiveListContent(File dir, String tab){
         File [] content = dir.listFiles();
         if (content == null){
             System.out.println("Directory is empty.");
@@ -43,13 +40,18 @@ public class RecursiveDirectoryList {
             for (File s : content) {
                 System.out.print(tab);
                 if (s.isDirectory()) {
-                    System.out.println("(D)" + s.getName());
+                    System.out.println("(D)" + s.getName() + ". Last modification: " + getModDate(s));
                     getRecursiveListContent(s, "\t");
                 } else {
-                    System.out.println("(F)" + s.getName());
+                    System.out.println("(F)" + s.getName()+ ". Last modification: " + getModDate(s));
                 }
             }
         }
+    }
+
+    public static String getModDate(File file){
+        long datetime = file.lastModified();
+        return dateFormat.format(datetime);
     }
 }
 
