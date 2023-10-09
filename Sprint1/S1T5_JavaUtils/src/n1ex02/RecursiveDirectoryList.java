@@ -8,43 +8,48 @@ import java.util.Scanner;
 public class RecursiveDirectoryList {
     public static void main(String[] args) {
 
-        new RecursiveDirectoryList().getRecursiveListContent();
+        new RecursiveDirectoryList().getRecursiveListContent(getDirectory());
     }
 
-    public void getRecursiveListContent(){
+    public static File getDirectory() {
         Scanner sc = new Scanner(System.in);
+        File dir;
         String path;
+        boolean isDir = false;
 
-        System.out.println("This program lists all the contents of a specific directory.\n" +
-                "Please introduce the directory's path: ");
-        path = sc.nextLine();
+        System.out.println("This program lists all the contents of a specific directory.");
 
-        File dir = new File(path);
+        do {
+            System.out.println("Please introduce the directory's path: ");
+            path = sc.nextLine();
+            dir = new File(path);
 
-        if (!dir.exists() || !dir.isDirectory()){
-            System.out.println("Path given is not directory.");
-            return;
-        }
+            if (!dir.exists() || !dir.isDirectory()) {
+                System.out.println("Path given is not directory.");
+            } else {
+                isDir = true;
+            }
+        } while (!isDir);
 
-        // LOOP TO REPEAT ID line36 executes
+        return dir;
+    }
+
+    public void getRecursiveListContent(File dir){
         File [] content = dir.listFiles();
-        if (content.length == 0){
+        if (content == null){
             System.out.println("Directory is empty.");
         } else {
             Arrays.sort(content);
             for (File s : content) {
                 if (s.isDirectory()) {
+                    String message;
                     System.out.println("(D)" + s.getName());
+                    getRecursiveListContent(s);
                 } else {
                     System.out.println("(F)" + s.getName());
                 }
             }
-
         }
-
-
-
-
     }
 }
 
