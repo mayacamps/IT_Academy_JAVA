@@ -2,13 +2,15 @@ package n1ex04;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ReadFileRecursiveListing {
+public class ReadFileRecursiveDirListing {
     static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    static int dirLev = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -51,16 +53,20 @@ public class ReadFileRecursiveListing {
         } else {
             Arrays.sort(content);
             for (File s : content) {
-                writer.write(tab);
+                for (int i = 0; i < dirLev; i++){
+                    writer.write(tab);
+                }
                 if (s.isDirectory()) {
-                    writer.write("(D)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
+                    dirLev++;
+                    writer.write(String.format("%s %40s" , "(D)" + s.getName(), "\t\t\tLast modification: " + getModDate(s) + "\n"));
                     getRecursiveTxtListContent(s, "\t", writer);
+
                 } else {
-                    writer.write("(F)" + s.getName() + "\n" + ". Last modification: " + getModDate(s));
-                    readFile(s);
+                    writer.write(String.format("%s %40s", "(F)" + s.getName(), "\t\t\tLast modification: " + getModDate(s) + "\n"));
+                    readFile(s, writer);
                 }
             }
-
+            dirLev = 0;
         }
     }
 
@@ -69,15 +75,15 @@ public class ReadFileRecursiveListing {
         return dateFormat.format(datetime);
     }
 
-    public static void readFile(File file){
-        Charset charset = Charset.forName("US-ASCII");
-        try (BufferedReader reader = Files.newBufferedReader(file.toPath(), charset)) {
+    public static void readFile(File s, Writer writer){
+        Charset charset = StandardCharsets.US_ASCII;
+        try (BufferedReader reader = Files.newBufferedReader(s.toPath(), charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                writer.write(line + "\n");
             }
         } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
+            System.err.format("IOException: %s%n", x.getMessage());
         }
     }
 }
