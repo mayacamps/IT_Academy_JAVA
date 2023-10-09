@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class RecursiveDirectoryList {
     public static void main(String[] args) {
 
-        new RecursiveDirectoryList().getRecursiveListContent(getDirectory());
+        new RecursiveDirectoryList().getRecursiveListContent(getDirectory(),"");
     }
 
     public static File getDirectory() {
@@ -34,17 +34,17 @@ public class RecursiveDirectoryList {
         return dir;
     }
 
-    public void getRecursiveListContent(File dir){
+    public void getRecursiveListContent(File dir, String tab){
         File [] content = dir.listFiles();
         if (content == null){
             System.out.println("Directory is empty.");
         } else {
             Arrays.sort(content);
             for (File s : content) {
+                System.out.print(tab);
                 if (s.isDirectory()) {
-                    String message;
                     System.out.println("(D)" + s.getName());
-                    getRecursiveListContent(s);
+                    getRecursiveListContent(s, "\t");
                 } else {
                     System.out.println("(F)" + s.getName());
                 }
