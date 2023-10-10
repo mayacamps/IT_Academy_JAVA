@@ -36,4 +36,10 @@ public class ObjectSer implements Serializable {
     public void setModDate(String modDate) {
         this.modDate = modDate;
     }
+
+    public String toString(){
+        return "File name: " + this.getName() +"\n" +
+                "Type: " + this.getType() + "\n" +
+                "Modification Date: " + this.getModDate() + "\n";
+    }
 }

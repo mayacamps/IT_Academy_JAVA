@@ -35,7 +35,6 @@ public class SerializationDirListing {
                     PrintWriter writer = new PrintWriter(new FileWriter(savePath + "\\DirectoryListing.txt"));
                     System.out.println("Saving directory content listing in txt file...");
                     getRecursiveTxtListContent(dir, "", writer);
-
                     writer.close();
                     System.out.println("Content saved in DirectoryListing.txt");
                 } catch (IOException e){
@@ -49,10 +48,9 @@ public class SerializationDirListing {
 
         serializeObject(myObj, "myObject.ser");
 
-        System.out.println(deserializeObject("myObject.ser"));
+        deserializeObject("myObject.ser");
 
     }
-
 
     public static void serializeObject(ObjectSer myObj, String name){
         try (FileOutputStream fs = new FileOutputStream(name)) {
@@ -66,24 +64,20 @@ public class SerializationDirListing {
         }
     }
 
-    public static String deserializeObject(String name){
+    public static void deserializeObject(String name){
         String message = "";
         System.out.println("Reading object...");
         try(FileInputStream fi = new FileInputStream(name)){
             ObjectInputStream is = new ObjectInputStream(fi);
             ObjectSer obj1 = (ObjectSer) is.readObject();
             if (obj1 != null){
-                message = "File name: " + obj1.getName() +"\n" +
-                        "Type: " + obj1.getType() + "\n" +
-                        "Modification Date: " + obj1.getModDate() + "\n";
+                System.out.println(obj1);
             }
         } catch (FileNotFoundException | ClassNotFoundException e) {
             System.err.println(e.getMessage());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
-        return message;
     }
 
     public static void getRecursiveTxtListContent(File dir, String tab, PrintWriter writer){
