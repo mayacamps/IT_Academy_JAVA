@@ -63,7 +63,13 @@ public class ReadFileRecursiveDirListing {
 
                 } else {
                     writer.write(String.format("%s %40s", "(F)" + s.getName(), "\t\t\tLast modification: " + getModDate(s) + "\n"));
-                    readFile(s, writer);
+
+                    if (s.getName().endsWith(".txt")){
+                        if (s.length() != 0){
+                            System.out.println("Content of file: " + s.getName());
+                        }
+                        readFile(s, writer);
+                    }
                 }
             }
             dirLev = 0;
@@ -80,7 +86,7 @@ public class ReadFileRecursiveDirListing {
         try (BufferedReader reader = Files.newBufferedReader(s.toPath(), charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                System.out.println("\t" + line);
             }
         } catch (IOException x) {
             System.err.format("IOException: " + x.getMessage());
