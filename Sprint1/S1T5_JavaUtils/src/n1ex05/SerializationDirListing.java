@@ -57,10 +57,8 @@ public class SerializationDirListing {
             ObjectOutputStream os = new ObjectOutputStream(fs);
             os.writeObject(myObj);
             System.out.println("Serialized Object!");
-        } catch (FileNotFoundException e) {
-            System.err.println(e.getMessage());
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
@@ -73,10 +71,8 @@ public class SerializationDirListing {
             if (obj1 != null){
                 System.out.println(obj1);
             }
-        } catch (FileNotFoundException | ClassNotFoundException e) {
-            System.err.println(e.getMessage());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        } catch (ClassNotFoundException | IOException e) {
+            e.getStackTrace();
         }
     }
 
