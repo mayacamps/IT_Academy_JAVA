@@ -72,7 +72,7 @@ public class ReadFileRecursiveDirListing {
                     }
                 }
             }
-            dirLev = 0;
+            dirLev--;
         }
     }
 

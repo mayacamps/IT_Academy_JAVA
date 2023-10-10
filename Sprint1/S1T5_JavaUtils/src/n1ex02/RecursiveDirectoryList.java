@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class RecursiveDirectoryList {
     static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    static int dirLev = 0;
 
     public static void main(String[] args) {
 
@@ -38,14 +39,18 @@ public class RecursiveDirectoryList {
         } else {
             Arrays.sort(content);
             for (File s : content) {
-                System.out.print(tab);
+                for (int i = 0; i < dirLev; i++){
+                    System.out.print(tab);
+                }
                 if (s.isDirectory()) {
+                    dirLev++;
                     System.out.println("(D)" + s.getName() + ". Last modification: " + getModDate(s));
                     getRecursiveListContent(s, "\t");
                 } else {
                     System.out.println("(F)" + s.getName()+ ". Last modification: " + getModDate(s));
                 }
             }
+            dirLev--;
         }
     }
 

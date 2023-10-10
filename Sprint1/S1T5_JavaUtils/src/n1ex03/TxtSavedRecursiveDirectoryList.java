@@ -65,7 +65,7 @@ public class TxtSavedRecursiveDirectoryList {
                     writer.write(String.format("%s %s" , "(F)" + s.getName(), "Last modification: " + getModDate(s) + "\n"));
                 }
             }
-            dirLev = 0;
+            dirLev --;
         }
     }
 
