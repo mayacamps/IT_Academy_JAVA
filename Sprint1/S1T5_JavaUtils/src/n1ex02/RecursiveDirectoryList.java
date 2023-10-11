@@ -10,26 +10,27 @@ public class RecursiveDirectoryList {
     static int dirLev = 0;
 
     public static void main(String[] args) {
+        if (args.length>0){
+            File dir;
+            boolean isDir = false;
 
-        Scanner sc = new Scanner(System.in);
-        File dir;
-        String path;
-        boolean isDir = false;
+            System.out.println("This program lists all the contents of a specific directory.");
 
-        System.out.println("This program lists all the contents of a specific directory.");
+            do {
+                String path = args[0];
+                dir = new File(path);
 
-        do {
-            System.out.println("Please introduce the directory's path: ");
-            path = sc.nextLine();
-            dir = new File(path);
+                if (!dir.exists() || !dir.isDirectory()) {
+                    System.out.println("Path given is not directory.");
+                } else {
+                    isDir = true;
+                    getRecursiveListContent(dir, "");
+                }
+            } while (!isDir);
+        } else {
+            System.out.println("Use: RecursiveDirectoryList.java directory_path");
+        }
 
-            if (!dir.exists() || !dir.isDirectory()) {
-                System.out.println("Path given is not directory.");
-            } else {
-                isDir = true;
-                getRecursiveListContent(dir, "");
-            }
-        } while (!isDir);
     }
 
     public static void getRecursiveListContent(File dir, String tab){

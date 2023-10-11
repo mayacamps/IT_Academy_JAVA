@@ -56,7 +56,7 @@ public class ConfigFileParametrization {
             e.getStackTrace();
         }
 
-//       READING PROPERTIES FILE
+//      READING PROPERTIES FILE
 //        Properties prop = new Properties();
 //        ClassLoader loader = Thread.currentThread().getContextClassLoader();
 //        InputStream stream = loader.getResourceAsStream("n1ex5.properties");
@@ -71,7 +71,6 @@ public class ConfigFileParametrization {
 //            System.out.println(key + " => " + value);
 //        }
     }
-
 
     public static void getRecursiveTxtListContent(File dir, String tab, PrintWriter writer){
         File [] content = dir.listFiles();

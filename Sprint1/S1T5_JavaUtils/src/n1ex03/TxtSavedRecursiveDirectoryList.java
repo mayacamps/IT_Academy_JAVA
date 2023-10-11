@@ -13,36 +13,39 @@ public class TxtSavedRecursiveDirectoryList {
     static int dirLev = 0;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        File dir;
-        String path, savePath;
-        boolean isDir = false;
 
-        System.out.println("This program lists all the contents of a specific directory.");
+        if (args.length>0){
+            File dir;
+            String path, savePath;
+            boolean isDir = false;
 
-        do {
-            System.out.println("Please introduce the directory's path: ");
-            path = sc.nextLine();
-            dir = new File(path);
 
-            if (!dir.exists() || !dir.isDirectory()) {
-                System.out.println("Path given is not directory.");
-            } else {
-                isDir = true;
-                try {
-                    savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex03";
+            do {
+                path = args[0];
+                dir = new File(path);
 
-                    PrintWriter writer = new PrintWriter(new FileWriter(savePath + "\\DirectoryListing.txt"));
-                    System.out.println("Saving directory content listing in txt file...");
-                    getRecursiveTxtListContent(dir, "", writer);
+                if (!dir.exists() || !dir.isDirectory()) {
+                    System.out.println("Path given is not directory.");
+                } else {
+                    isDir = true;
+                    try {
+                        savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex03";
 
-                    writer.close();
-                    System.out.println("Content saved in DirectoryListing.txt");
-                } catch (IOException e){
-                    System.out.println("Error." + e.getMessage());
+                        PrintWriter writer = new PrintWriter(new FileWriter(savePath + "\\DirectoryListing.txt"));
+                        System.out.println("Saving directory content listing in txt file...");
+                        getRecursiveTxtListContent(dir, "", writer);
+
+                        writer.close();
+                        System.out.println("Content saved in DirectoryListing.txt");
+                    } catch (IOException e){
+                        System.out.println("Error." + e.getMessage());
+                    }
                 }
-            }
-        } while (!isDir);
+            } while (!isDir);
+        } else {
+            System.out.println("Use: TxtRecursiveDirectoryList.java directory_path");
+        }
+
     }
 
 

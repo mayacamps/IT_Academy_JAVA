@@ -7,22 +7,19 @@ import java.util.Scanner;
 public class DirectoryList {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String path;
-
-        System.out.println("This program lists all the contents of a specific directory.\n" +
-                "Please introduce the directory's path: ");
-        path = sc.nextLine();
-
-        new DirectoryList().getListContent(path);
-
+        if (args.length > 0) {
+            String path = args[0];
+            new DirectoryList().getListContent(path);
+        } else {
+            System.out.println("Use: RecursiveDirectoryList.java directory_path");
+        }
     }
 
     public void getListContent(String path){
         File dir = new File(path);
 
         if (!dir.exists() || !dir.isDirectory()){
-            System.out.println("Path given is not directory.");
+            System.out.println("Path given is not directory or doesn't exist.");
             return;
         }
 
