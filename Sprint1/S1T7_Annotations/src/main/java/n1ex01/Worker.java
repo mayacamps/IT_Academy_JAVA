@@ -34,7 +34,8 @@ public class Worker {
         this.priceHour = priceHour;
     }
 
-    public int calcSalary(int numHours){
-        return numHours * priceHour;
+    public void calcSalary(int numHours){
+        int pay = numHours * priceHour;
+        System.out.println("Worker's pay is: " + pay + "eur.");
     }
 }
