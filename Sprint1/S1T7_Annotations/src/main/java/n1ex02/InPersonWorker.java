@@ -12,4 +12,9 @@ public class InPersonWorker extends Worker {
         double pay = numHours * getPriceHour() + gas;
         System.out.println("Worker's pay is: " + pay + "eur.");
     }
+
+    @Deprecated
+    public void deprecatedMethod(){
+        System.out.println("This is a deprecated method in InPersonWorker class.");
+    }
 }
