@@ -1,3 +1,5 @@
+package n1ex01;
+
 public class NoGenericMethods<T> {
     private T t1;
     private T t2;
