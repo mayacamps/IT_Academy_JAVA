@@ -42,7 +42,7 @@ public class ConfigFileParametrization {
         } while (!isDir);
 
         // SAVING TO PROPERTIES FILE
-        String configFilePath = savePath + "\\n1ex5.properties";
+        String configFilePath = savePath + "\\n2ex1.properties";
 
         Properties n1ex5Props = new Properties();
         n1ex5Props.setProperty("Directory Path", path);
