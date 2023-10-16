@@ -2,9 +2,9 @@ package n1ex01;
 
 public class Worker {
     private String name, surname;
-    private int priceHour;
+    private double priceHour;
 
-    public Worker(String name, String surname, int priceHour) {
+    public Worker(String name, String surname, double priceHour) {
         this.name = name;
         this.surname = surname;
         this.priceHour = priceHour;
@@ -26,7 +26,7 @@ public class Worker {
         this.surname = surname;
     }
 
-    public int getPriceHour() {
+    public double getPriceHour() {
         return priceHour;
     }
 
@@ -34,8 +34,8 @@ public class Worker {
         this.priceHour = priceHour;
     }
 
-    public void calcSalary(int numHours){
-        int pay = numHours * priceHour;
+    public void calcSalary(double numHours){
+        double pay = numHours * priceHour;
         System.out.println("Worker's pay is: " + pay + "eur.");
     }
 }

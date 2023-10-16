@@ -2,14 +2,14 @@ package n1ex01;
 
 public class InPersonWorker extends Worker{
     private static int gas;
-    public InPersonWorker(String name, String surname, int priceHour) {
+    public InPersonWorker(String name, String surname, double priceHour) {
         super(name, surname, priceHour);
         gas = 100;
     }
 
     @Override
-    public void calcSalary(int numHours) {
-        int pay = numHours * getPriceHour() + gas;
+    public void calcSalary(double numHours) {
+        double pay = numHours * getPriceHour() + gas;
         System.out.println("Worker's pay is: " + pay + "eur.");
     }
 }
