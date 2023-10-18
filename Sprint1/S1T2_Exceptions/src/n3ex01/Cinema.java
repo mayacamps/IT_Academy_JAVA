@@ -1,8 +1,7 @@
 package n3ex01;
 
 import n2ex01.Entry;
-
-import java.util.Scanner;
+import n3ex01.exceptions.*;
 
 public class Cinema {
     private int numRows, numSeatsRow;
@@ -18,24 +17,13 @@ public class Cinema {
         do {
             opt = menu();
             switch (opt) {
-                case 1:
-                    showSeats();
-                    break;
-                case 2:
-                    showSeatsPerson();
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 0:
-                    System.out.println("Bye!");
-                    break;
-                default:
-                    System.out.println("Please select a valid option.");
-                    break;
+                case 1 -> showSeats();
+                case 2 -> showSeatsPerson();
+                case 3 -> reserveSeat();
+                case 4 -> ;
+                case 5 -> ;
+                case 0 -> System.out.println("Bye!");
+                default -> System.out.println("Please select a valid option.");
             }
         } while (opt != 0);
     }
@@ -77,6 +65,61 @@ public class Cinema {
         } else {
             System.out.println("There are no seats reserved yet.\n");
         }
+    }
+
+    public void reserveSeat() {
+        boolean reserved = false;
+        int numRow = introduceRow();
+        int numSeat = introduceSeat();
+        String name = introducePerson();
+
+        for (Seat s : seatManage.getSeats()){
+            if (s.getNameReserv().equalsIgnoreCase(name) &&
+            s.getRowNum() == numRow &&
+            s.getSeatNum() == numSeat){
+                reserved = true;
+            }
+        }
+        if (!reserved){
+            Seat newSeat = new Seat(numRow, numSeat, name);
+            try {
+                seatManage.addSeat(newSeat);
+            } catch (OccupiedSeatException e) {
+                System.err.println(e.getMessage());
+            }
+        } else{
+            System.out.println("Seat is already reserved.");
+        }
+    }
+
+    public void deleteReservation(){
+
+    }
+
+    public String introducePerson() throws Exception {
+        String name = Entry.readString("Introduce the person's name");
+        for (int i = 0; i < name.length(); i++){
+            if (Character.isDigit(name.charAt(i))){
+                throw new IncorrectNameException();
+            }
+        }
+        return name;
+    }
+    public int introduceRow() throws Exception {
+        int rowNum = Entry.readInt("Introduce the row number");
+
+        if (rowNum >= 1 && rowNum <= this.numRows){
+            return rowNum;
+        }
+        throw new IncorrectRowException();
+    }
+
+    public int introduceSeat() throws Exception {
+        int seatNum = Entry.readInt("Introduce the seat number");
+        if (seatNum >= 1 && seatNum <= this.numSeatsRow){
+            return seatNum;
+        }
+        throw new IncorrectSeatException();
     }
     public void getInitialData(){
         this.numRows = Entry.readInt("How many rows are there?");
