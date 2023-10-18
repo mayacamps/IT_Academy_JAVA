@@ -5,7 +5,4 @@ public class FreeSeatException extends Exception{
         super("The seat is not reserved.");
     }
 
-    public FreeSeatException(String message){
-        super(message);
-    }
 }
