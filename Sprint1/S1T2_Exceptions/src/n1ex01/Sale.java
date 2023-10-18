@@ -25,7 +25,7 @@ public class Sale {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}	
-	
+
 	public int calcTotal(){
 		try {
 			try {

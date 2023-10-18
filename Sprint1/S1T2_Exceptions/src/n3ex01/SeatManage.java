@@ -40,7 +40,7 @@ public class SeatManage {
             if (pos != -1){
                 seats.remove(pos);
             } else throw new FreeSeatException();
-        } else throw new FreeSeatException("There are no seats reserved yet.");
+        } else System.out.println("There are no reserved seats yet.\n");
 
     }
 }

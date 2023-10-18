@@ -41,8 +41,7 @@ public class SerializationAndDeserialization {
         System.out.println("Reading object...");
         try (FileInputStream fis = new FileInputStream(savePath + "\\" + fileName);
             ObjectInputStream ois = new ObjectInputStream(fis)){
-            ArrayList<ObjectSer> objectList = new ArrayList<ObjectSer>();
-            objectList = (ArrayList<ObjectSer>) ois.readObject();
+            ArrayList<ObjectSer> objectList = (ArrayList<ObjectSer>) ois.readObject();
             ois.close();
 
             for (ObjectSer o : objectList){
