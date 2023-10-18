@@ -25,24 +25,6 @@ public class Sale {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}	
-
-	// GENERAL METHODS
-//	public int calcTotal() {
-//		try {
-//			if (products.size() == 0) {
-//				throw new EmptySaleException("To make a sale, you must add products first.");
-//			} else {
-//				for (int i = 0; i < products.size(); i++) {
-//					totalPrice += products.get(i).getPrice();
-//				}
-//			}
-//		} catch (EmptySaleException e) {
-////			System.err.println(e); // Shows type Exception
-//			System.err.println(e.getMessage());
-//		}
-//		
-//		return totalPrice;
-//	}
 	
 	public int calcTotal(){
 		try {
