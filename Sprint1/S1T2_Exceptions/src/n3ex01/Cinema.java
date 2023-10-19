@@ -40,14 +40,12 @@ public class Cinema {
     }
 
     public void showSeats() {
-        if (!seatManage.getSeats().isEmpty()){
+        if (existsAnyReserv()) {
             System.out.println("Reserved seats:");
-            for (Seat s : seatManage.getSeats()){
+            for (Seat s : seatManage.getSeats()) {
                 System.out.println(s);
             }
             System.out.println();
-        } else {
-            System.out.println("There are no seats reserved yet.\n");
         }
     }
 
@@ -56,7 +54,7 @@ public class Cinema {
         int seatsToName = 0;
         StringBuilder listSeats = new StringBuilder();
 
-        if (!seatManage.getSeats().isEmpty()){
+        if (existsAnyReserv()){
             System.out.println("Introduce the person's name");
             String name = sc.nextLine();
 
@@ -72,8 +70,6 @@ public class Cinema {
                 System.out.println("Seats reserved under " + name + ": \n" +
                         listSeats);
             }
-        } else {
-            System.out.println("There are no seats reserved yet.\n");
         }
     }
 
@@ -90,27 +86,31 @@ public class Cinema {
     }
 
     public void cancelReservation(){
-        try {
-            int numRow = introduceRow();
-            int numSeat = introduceSeat();
-            seatManage.deleteSeat(numRow, numSeat);
-            System.out.println("Deleted reservation!\n");
-        }catch (IncorrectRowException | IncorrectSeatException | FreeSeatException e){
-            System.out.println(e.getMessage());
+        if (existsAnyReserv()){
+            try {
+                int numRow = introduceRow();
+                int numSeat = introduceSeat();
+                seatManage.deleteSeat(numRow, numSeat);
+                System.out.println("Deleted reservation!\n");
+            }catch (IncorrectRowException | IncorrectSeatException | FreeSeatException e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     public void cancelReservationsPerson(){
-        try {
-            String name = introducePerson();
-            for (Seat s : seatManage.getSeats()){
-                if (s.getNameReserv().equalsIgnoreCase(name)){
-                    seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
+        if (existsAnyReserv()) {
+            try {
+                String name = introducePerson();
+                for (Seat s : seatManage.getSeats()) {
+                    if (s.getNameReserv().equalsIgnoreCase(name)) {
+                        seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
+                    }
                 }
+                System.out.println("Deleted all reservations under " + name + "\n");
+            } catch (IncorrectNameException | FreeSeatException e) {
+                System.out.println(e.getMessage());
             }
-            System.out.println("Deleted all reservations under " + name + "\n");
-        } catch (IncorrectNameException | FreeSeatException e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -141,9 +141,18 @@ public class Cinema {
         }
         throw new IncorrectSeatException();
     }
+
     public void getInitialData(){
         System.out.println("Initializing cinema...");
         this.numRows = Entry.readInt("How many rows are there?");
         this.numSeatsRow = Entry.readInt("Hoy many seats are in a row?");
+    }
+
+    public boolean existsAnyReserv(){
+        if (!seatManage.getSeats().isEmpty()){
+            return true;
+        }
+        System.out.println("There are no seats reserved yet.\n");
+        return false;
     }
 }
