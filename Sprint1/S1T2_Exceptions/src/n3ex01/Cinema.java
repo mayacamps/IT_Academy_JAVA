@@ -76,7 +76,6 @@ public class Cinema {
             String name = introducePerson();
             Seat newSeat = new Seat(numRow, numSeat, name);
             seatManage.addSeat(newSeat);
-            System.out.println(seatManage.getSeats());
         } catch (IncorrectNameException | IncorrectRowException | IncorrectSeatException e){
             System.err.println(e.getMessage());
         }

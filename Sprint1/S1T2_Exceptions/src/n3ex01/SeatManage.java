@@ -19,6 +19,9 @@ public class SeatManage {
     public void addSeat(Seat newSeat)  {
        if (findSeat(newSeat.getRowNum(), newSeat.getSeatNum()) == -1){
            getSeats().add(newSeat);
+           System.out.println("Seat reserved!\n");
+       } else {
+           System.out.println("Error. Seat is already reserved.\n");
        }
     }
 
