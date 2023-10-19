@@ -46,6 +46,7 @@ public class Cinema {
             for (Seat s : seatManage.getSeats()){
                 System.out.println(s);
             }
+            System.out.println();
         } else {
             System.out.println("There are no seats reserved yet.\n");
         }
