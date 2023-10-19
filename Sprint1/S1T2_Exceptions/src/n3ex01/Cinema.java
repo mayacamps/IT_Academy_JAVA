@@ -2,6 +2,9 @@ package n3ex01;
 
 import n2ex01.Entry;
 import n3ex01.exceptions.*;
+
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Scanner;
 
 public class Cinema {
@@ -103,15 +106,17 @@ public class Cinema {
             try {
                 int reservUnderName = 0;
                 String name = introducePerson();
-                for (Seat s : seatManage.getSeats()) {
+                ArrayList<Seat> seats = seatManage.getSeats();
+
+                for (Seat s : seats) {
+//                    throws ConcurrentModificationException - only deletes first object in seats
+                    System.out.println(s); // print to see
                     if (s.getNameReserv().equalsIgnoreCase(name)) {
                         seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
-                    } else {
                         reservUnderName++;
                     }
                 }
-                String message = (reservUnderName == 0) ? ("There are no seats reserved under " + name + "\n") :
-                        ("Deleted all reservations under " + name + "\n");
+                String message = (reservUnderName != 0) ? ("Deleted all reservations under " + name + "\n") : ("There are no seats reserved under " + name + "\n");
                 System.out.println(message);
 
             } catch (IncorrectNameException | FreeSeatException e) {
