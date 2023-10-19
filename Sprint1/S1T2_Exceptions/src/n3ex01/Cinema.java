@@ -119,6 +119,7 @@ public class Cinema {
         throw new IncorrectSeatException();
     }
     public void getInitialData(){
+        System.out.println("Initializing cinema...");
         this.numRows = Entry.readInt("How many rows are there?");
         this.numSeatsRow = Entry.readInt("Hoy many seats are in a row?");
     }
