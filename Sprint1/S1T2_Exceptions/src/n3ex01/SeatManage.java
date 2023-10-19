@@ -35,12 +35,10 @@ public class SeatManage {
     }
 
     public void deleteSeat(int numRow, int numSeat) throws FreeSeatException {
-        if (!seats.isEmpty()){
-            int pos = findSeat(numRow, numSeat);
-            if (pos != -1){
-                seats.remove(pos);
-            } else throw new FreeSeatException();
-        } else System.out.println("There are no reserved seats yet.\n");
-
+        int pos = findSeat(numRow, numSeat);
+        if (pos == -1){
+            throw new FreeSeatException();
+        }
+        seats.remove(pos);
     }
 }
