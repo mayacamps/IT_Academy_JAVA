@@ -69,34 +69,35 @@ public class Cinema {
 
     public void reserveSeat() {
         boolean reserved = false;
-        int numRow = introduceRow();
-        int numSeat = introduceSeat();
-        String name = introducePerson();
+        try {
+            int numRow = introduceRow();
+            int numSeat = introduceSeat();
+            String name = introducePerson();
 
-        for (Seat s : seatManage.getSeats()){
-            if (s.getNameReserv().equalsIgnoreCase(name) &&
-            s.getRowNum() == numRow &&
-            s.getSeatNum() == numSeat){
-                reserved = true;
+            for (Seat s : seatManage.getSeats()){
+                if (s.getNameReserv().equalsIgnoreCase(name) &&
+                        s.getRowNum() == numRow &&
+                        s.getSeatNum() == numSeat){
+                    reserved = true;
+                }
             }
-        }
-        if (!reserved){
-            Seat newSeat = new Seat(numRow, numSeat, name);
-            try {
-                seatManage.addSeat(newSeat);
-            } catch (OccupiedSeatException e) {
-                System.err.println(e.getMessage());
+            if (!reserved){
+                Seat newSeat = new Seat(numRow, numSeat, name);
+                try {
+                    seatManage.addSeat(newSeat);
+                } catch (OccupiedSeatException e) {
+                    System.err.println(e.getMessage());
+                }
+            } else{
+                System.out.println("Seat is already reserved.");
             }
-        } else{
-            System.out.println("Seat is already reserved.");
+        } catch (IncorrectNameException | IncorrectRowException | IncorrectSeatException e){
+            System.err.println(e.getMessage());
         }
     }
 
-    public void deleteReservation(){
 
-    }
-
-    public String introducePerson() throws Exception {
+    public String introducePerson() throws IncorrectNameException {
         String name = Entry.readString("Introduce the person's name");
         for (int i = 0; i < name.length(); i++){
             if (Character.isDigit(name.charAt(i))){
@@ -105,7 +106,7 @@ public class Cinema {
         }
         return name;
     }
-    public int introduceRow() throws Exception {
+    public int introduceRow() throws IncorrectRowException {
         int rowNum = Entry.readInt("Introduce the row number");
 
         if (rowNum >= 1 && rowNum <= this.numRows){
@@ -114,7 +115,7 @@ public class Cinema {
         throw new IncorrectRowException();
     }
 
-    public int introduceSeat() throws Exception {
+    public int introduceSeat() throws IncorrectSeatException {
         int seatNum = Entry.readInt("Introduce the seat number");
         if (seatNum >= 1 && seatNum <= this.numSeatsRow){
             return seatNum;
