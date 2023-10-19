@@ -2,7 +2,6 @@ package n3ex01;
 
 import n2ex01.Entry;
 import n3ex01.exceptions.*;
-
 import java.util.Scanner;
 
 public class Cinema {
@@ -22,7 +21,7 @@ public class Cinema {
                 case 1 -> showSeats();
                 case 2 -> showSeatsPerson();
                 case 3 -> reserveSeat();
-                case 4 -> System.out.println("You chose opt 4");
+                case 4 -> cancelReservation();
                 case 5 -> System.out.println("You chose opt 5");
                 case 0 -> System.out.println("Bye!");
                 default -> System.out.println("Please select a valid option.");
@@ -86,6 +85,17 @@ public class Cinema {
             Seat newSeat = new Seat(numRow, numSeat, name);
             seatManage.addSeat(newSeat);
         } catch (IncorrectNameException | IncorrectRowException | IncorrectSeatException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void cancelReservation(){
+        try {
+            int numRow = introduceRow();
+            int numSeat = introduceSeat();
+            seatManage.deleteSeat(numRow, numSeat);
+            System.out.println("Deleted reservation!\n");
+        }catch (IncorrectRowException | IncorrectSeatException | FreeSeatException e){
             System.err.println(e.getMessage());
         }
     }
