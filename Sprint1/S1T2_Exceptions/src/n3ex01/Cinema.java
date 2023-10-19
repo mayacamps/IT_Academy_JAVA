@@ -96,7 +96,7 @@ public class Cinema {
             seatManage.deleteSeat(numRow, numSeat);
             System.out.println("Deleted reservation!\n");
         }catch (IncorrectRowException | IncorrectSeatException | FreeSeatException e){
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
