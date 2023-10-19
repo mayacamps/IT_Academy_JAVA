@@ -22,7 +22,7 @@ public class Cinema {
                 case 2 -> showSeatsPerson();
                 case 3 -> reserveSeat();
                 case 4 -> cancelReservation();
-                case 5 -> System.out.println("You chose opt 5");
+                case 5 -> cancelReservationsPerson();
                 case 0 -> System.out.println("Bye!");
                 default -> System.out.println("Please select a valid option.");
             }
@@ -100,6 +100,19 @@ public class Cinema {
         }
     }
 
+    public void cancelReservationsPerson(){
+        try {
+            String name = introducePerson();
+            for (Seat s : seatManage.getSeats()){
+                if (s.getNameReserv().equalsIgnoreCase(name)){
+                    seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
+                }
+            }
+            System.out.println("Deleted all reservations under " + name + "\n");
+        } catch (IncorrectNameException | FreeSeatException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public String introducePerson() throws IncorrectNameException {
         Scanner sc = new Scanner(System.in);
