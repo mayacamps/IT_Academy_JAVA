@@ -52,17 +52,25 @@ public class Cinema {
     }
 
     public void showSeatsPerson(){
+        Scanner sc = new Scanner(System.in);
         int seatsToName = 0;
-        String name = Entry.readString("Introduce the person's name");
+        StringBuilder listSeats = new StringBuilder();
+
         if (!seatManage.getSeats().isEmpty()){
+            System.out.println("Introduce the person's name");
+            String name = sc.nextLine();
+
             for (Seat s: seatManage.getSeats()){
                 if (s.getNameReserv().equalsIgnoreCase(name)){
-                    System.out.println(s);
+                    listSeats.append(s).append("\n");
                     seatsToName++;
                 }
             }
             if (seatsToName == 0){
                 System.out.println("There is no seat reserved under this name.\n");
+            } else {
+                System.out.println("Seats reserved under " + name + ": \n" +
+                        listSeats);
             }
         } else {
             System.out.println("There are no seats reserved yet.\n");
