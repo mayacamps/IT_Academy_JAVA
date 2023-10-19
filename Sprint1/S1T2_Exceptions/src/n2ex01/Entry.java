@@ -17,7 +17,7 @@ public class Entry {
 				res = en.nextByte();
 				isByte = true;
 			} catch (InputMismatchException e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 				en.nextLine();
 			}
 		} while (!isByte);
@@ -35,7 +35,7 @@ public class Entry {
 				res = en.nextInt();
 				isInt = true;
 			} catch (InputMismatchException e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 				en.nextLine();
 			}
 		} while (!isInt);
@@ -56,7 +56,7 @@ public class Entry {
 				}
 				isFloat = true;
 			} catch (InputMismatchException e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 				en.nextLine();
 			}
 		} while (!isFloat);
@@ -78,7 +78,7 @@ public class Entry {
 					isDouble = true;
 				}
 			} catch (InputMismatchException e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 				en.nextLine();
 			}
 		} while (!isDouble);
@@ -102,7 +102,7 @@ public class Entry {
 				isChar = true;
 				
 			} catch (Exception e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 			}	
 		} while (!isChar);
 		
@@ -123,7 +123,7 @@ public class Entry {
 				isString = true;
 
 			} catch (Exception e) {
-				System.err.println("Format error." + e.getMessage());
+				System.err.println("Format error.");
 			}
 			
 		} while (!isString);
