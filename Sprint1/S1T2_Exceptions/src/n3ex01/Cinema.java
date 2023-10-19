@@ -101,13 +101,19 @@ public class Cinema {
     public void cancelReservationsPerson(){
         if (existsAnyReserv()) {
             try {
+                int reservUnderName = 0;
                 String name = introducePerson();
                 for (Seat s : seatManage.getSeats()) {
                     if (s.getNameReserv().equalsIgnoreCase(name)) {
                         seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
+                    } else {
+                        reservUnderName++;
                     }
                 }
-                System.out.println("Deleted all reservations under " + name + "\n");
+                String message = (reservUnderName == 0) ? ("There are no seats reserved under " + name + "\n") :
+                        ("Deleted all reservations under " + name + "\n");
+                System.out.println(message);
+
             } catch (IncorrectNameException | FreeSeatException e) {
                 System.out.println(e.getMessage());
             }
