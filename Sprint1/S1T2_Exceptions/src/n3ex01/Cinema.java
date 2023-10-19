@@ -3,6 +3,8 @@ package n3ex01;
 import n2ex01.Entry;
 import n3ex01.exceptions.*;
 
+import java.util.Scanner;
+
 public class Cinema {
     private int numRows, numSeatsRow;
     private SeatManage seatManage;
@@ -20,8 +22,8 @@ public class Cinema {
                 case 1 -> showSeats();
                 case 2 -> showSeatsPerson();
                 case 3 -> reserveSeat();
-                case 4 -> ;
-                case 5 -> ;
+                case 4 -> System.out.println("You chose opt 4");
+                case 5 -> System.out.println("You chose opt 5");
                 case 0 -> System.out.println("Bye!");
                 default -> System.out.println("Please select a valid option.");
             }
@@ -68,29 +70,13 @@ public class Cinema {
     }
 
     public void reserveSeat() {
-        boolean reserved = false;
         try {
             int numRow = introduceRow();
             int numSeat = introduceSeat();
             String name = introducePerson();
-
-            for (Seat s : seatManage.getSeats()){
-                if (s.getNameReserv().equalsIgnoreCase(name) &&
-                        s.getRowNum() == numRow &&
-                        s.getSeatNum() == numSeat){
-                    reserved = true;
-                }
-            }
-            if (!reserved){
-                Seat newSeat = new Seat(numRow, numSeat, name);
-                try {
-                    seatManage.addSeat(newSeat);
-                } catch (OccupiedSeatException e) {
-                    System.err.println(e.getMessage());
-                }
-            } else{
-                System.out.println("Seat is already reserved.");
-            }
+            Seat newSeat = new Seat(numRow, numSeat, name);
+            seatManage.addSeat(newSeat);
+            System.out.println(seatManage.getSeats());
         } catch (IncorrectNameException | IncorrectRowException | IncorrectSeatException e){
             System.err.println(e.getMessage());
         }
@@ -98,7 +84,9 @@ public class Cinema {
 
 
     public String introducePerson() throws IncorrectNameException {
-        String name = Entry.readString("Introduce the person's name");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce the person's name");
+        String name = sc.nextLine();
         for (int i = 0; i < name.length(); i++){
             if (Character.isDigit(name.charAt(i))){
                 throw new IncorrectNameException();

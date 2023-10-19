@@ -16,13 +16,10 @@ public class SeatManage {
         return this.seats;
     }
 
-    public void addSeat(Seat newSeat) throws OccupiedSeatException {
-        for (Seat s: seats){
-            if (!s.equals(newSeat)){
-                seats.add(newSeat);
-            }
-            else throw new OccupiedSeatException();
-        }
+    public void addSeat(Seat newSeat)  {
+       if (findSeat(newSeat.getRowNum(), newSeat.getSeatNum()) == -1){
+           getSeats().add(newSeat);
+       }
     }
 
     public int findSeat(int numRow, int numSeat) {
