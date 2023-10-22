@@ -104,22 +104,23 @@ public class Cinema {
     public void cancelReservationsPerson(){
         if (existsAnyReserv()) {
             try {
-                int reservUnderName = 0;
                 String name = introducePerson();
-                ArrayList<Seat> seats = seatManage.getSeats();
+                ArrayList<Seat> seatsToDelete = new ArrayList<>();
 
-                for (Seat s : seats) {
-//                    throws ConcurrentModificationException - only deletes first object in seats
-                    System.out.println(s); // print to see
-                    if (s.getNameReserv().equalsIgnoreCase(name)) {
-                        seatManage.deleteSeat(s.getRowNum(), s.getSeatNum());
-                        reservUnderName++;
+                for (Seat s : seatManage.getSeats()){
+                    if (s.getNameReserv().equalsIgnoreCase(name)){
+                        seatsToDelete.add(s);
                     }
                 }
-                String message = (reservUnderName != 0) ? ("Deleted all reservations under " + name + "\n") : ("There are no seats reserved under " + name + "\n");
-                System.out.println(message);
+                
+                if (!seatsToDelete.isEmpty()){
+                    seatManage.getSeats().removeAll(seatsToDelete);
+                    System.out.println("Deleted all reservations under " + name + "\n");
+                } else {
+                    System.out.println("There are no seats reserved under " + name + "\n");
+                }
 
-            } catch (IncorrectNameException | FreeSeatException e) {
+            } catch (IncorrectNameException e) {
                 System.out.println(e.getMessage());
             }
         }
