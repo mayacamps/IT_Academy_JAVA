@@ -119,7 +119,6 @@ public class Cinema {
                 } else {
                     System.out.println("There are no seats reserved under " + name + "\n");
                 }
-
             } catch (IncorrectNameException e) {
                 System.out.println(e.getMessage());
             }
