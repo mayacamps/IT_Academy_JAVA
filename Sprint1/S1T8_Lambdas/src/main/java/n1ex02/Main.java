@@ -1,4 +1,4 @@
-package n1ex01;
+package n1ex02;
 
 import java.util.Arrays;
 import java.util.List;
