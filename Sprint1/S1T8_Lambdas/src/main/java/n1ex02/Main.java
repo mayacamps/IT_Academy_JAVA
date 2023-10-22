@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         List<String> list = Arrays.asList("skateboard", "long", "bicycle", "scooter", "rollerblade", "electric bike");
         list.stream()
-                .filter(l -> l.contains("o"))
+                .filter(l -> l.contains("o") && l.length() > 5)
                 .forEach(l -> System.out.println(l));
     }
 }
