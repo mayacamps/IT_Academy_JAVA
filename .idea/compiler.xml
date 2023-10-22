@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="S1T7_Annotations" />
         <module name="S1T4_Testing" />
+        <module name="S1T8_Lambdas" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

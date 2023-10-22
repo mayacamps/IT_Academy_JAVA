@@ -112,7 +112,7 @@ public class Cinema {
                         seatsToDelete.add(s);
                     }
                 }
-                
+
                 if (!seatsToDelete.isEmpty()){
                     seatManage.getSeats().removeAll(seatsToDelete);
                     System.out.println("Deleted all reservations under " + name + "\n");
