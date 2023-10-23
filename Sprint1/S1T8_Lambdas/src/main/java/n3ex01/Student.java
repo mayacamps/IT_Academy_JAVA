@@ -46,11 +46,9 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", course='" + course + '\'' +
-                ", age=" + age +
-                ", score=" + score +
-                '}';
+        return "Student name: '" + name + '\'' +
+                "\ncourse: '" + course + '\'' +
+                "\nage: " + age +
+                "\nscore: " + score + "\n";
     }
 }
