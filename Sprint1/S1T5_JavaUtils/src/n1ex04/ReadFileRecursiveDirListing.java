@@ -27,9 +27,7 @@ public class ReadFileRecursiveDirListing {
                 } else {
                     isDir = true;
                     try {
-                        savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex04";
-
-                        PrintWriter writer = new PrintWriter(new FileWriter(savePath + "\\DirectoryListing.txt"));
+                        PrintWriter writer = new PrintWriter(new FileWriter("DirectoryListing.txt"));
                         System.out.println("Saving directory content listing in txt file...");
                         getRecursiveTxtListContent(dir, "", writer);
 

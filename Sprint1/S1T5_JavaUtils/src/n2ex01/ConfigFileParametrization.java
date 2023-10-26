@@ -1,6 +1,7 @@
 package n2ex01;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Properties;
@@ -11,7 +12,7 @@ public class ConfigFileParametrization {
     static int dirLev = 0;
     static String path;
     static String fileName = "DirectoryListing.txt";
-    static String savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n2ex01";
+    static String savePath = System.getProperty("user.dir");
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -57,19 +58,19 @@ public class ConfigFileParametrization {
         }
 
 //      READING PROPERTIES FILE
-//        Properties prop = new Properties();
-//        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-//        InputStream stream = loader.getResourceAsStream("n1ex5.properties");
-//        try {
-//            prop.load(stream);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        for(String key : prop.stringPropertyNames()) {
-//            String value = prop.getProperty(key);
-//            System.out.println(key + " => " + value);
-//        }
+        Properties prop = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream stream = loader.getResourceAsStream("n2ex1.properties");
+        try {
+            prop.load(stream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        for(String key : prop.stringPropertyNames()) {
+            String value = prop.getProperty(key);
+            System.out.println(key + " => " + value);
+        }
     }
 
     public static void getRecursiveTxtListContent(File dir, String tab, PrintWriter writer){
