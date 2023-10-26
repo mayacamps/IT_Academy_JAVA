@@ -7,3 +7,12 @@ SELECT apellido1, apellido2, p.nombre, d.nombre FROM persona AS p INNER JOIN pro
 SELECT asig.nombre, c.anyo_inicio, c.anyo_fin FROM asignatura AS asig INNER JOIN alumno_se_matricula_asignatura AS asma ON asig.id = asma.id_asignatura INNER JOIN curso_escolar AS c ON asma.id_curso_escolar = c.id INNER JOIN persona as p ON p.id = asma.id_alumno WHERE p.nif = '26902806M';
 SELECT DISTINCT d.nombre FROM departamento AS d INNER JOIN profesor AS prof ON d.id = prof.id_departamento INNER JOIN asignatura AS asig ON prof.id_profesor = asig.id_profesor INNER JOIN grado ON asig.id_grado = grado.id WHERE grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
 SELECT DISTINCT apellido1, apellido2, nombre FROM persona INNER JOIN alumno_se_matricula_asignatura AS asma ON persona.id = asma.id_alumno INNER JOIN curso_escolar AS c ON asma.id_curso_escolar = c.id WHERE tipo = 'alumno' AND anyo_inicio = 2018;
+
+-- LEFT JOIN AND RIGHT JOIN
+/*1*/SELECT d.nombre, apellido1, apellido2, p.nombre FROM persona AS p INNER JOIN profesor AS prof ON p.id = prof.id_profesor LEFT JOIN departamento AS d ON prof.id_departamento = d.id ORDER BY d.nombre;
+/*2*/SELECT apellido1, apellido2, p.nombre FROM persona AS p INNER JOIN profesor AS prof ON p.id = prof.id_profesor LEFT JOIN departamento AS d ON prof.id_departamento = d.id WHERE d.id IS NULL ORDER BY d.nombre;
+/*3*/SELECT d.nombre FROM departamento AS d LEFT JOIN profesor AS prof ON d.id = prof.id_departamento WHERE prof.id_departamento IS NULL ORDER BY d.nombre;
+/*4*/SELECT apellido1, apellido2, p.nombre FROM persona AS p INNER JOIN profesor AS prof ON p.id = prof.id_profesor LEFT JOIN asignatura AS asig ON prof.id_profesor = asig.id_profesor WHERE asig.id_profesor IS NULL ORDER BY prof.id_profesor;
+/*5*/SELECT asig.nombre FROM persona AS p INNER JOIN profesor AS prof ON p.id = prof.id_profesor RIGHT JOIN asignatura AS asig ON prof.id_profesor = asig.id_profesor WHERE prof.id_profesor IS NULL;
+
+
