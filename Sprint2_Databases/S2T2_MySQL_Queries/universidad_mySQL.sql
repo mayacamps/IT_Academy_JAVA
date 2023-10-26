@@ -22,3 +22,4 @@
 /*4*/SELECT d.nombre AS departamento, COUNT(prof.id_profesor) AS cantidad_profesores FROM departamento AS d LEFT JOIN profesor AS prof ON d.id = prof.id_departamento GROUP BY d.nombre ORDER BY COUNT(prof.id_profesor), d.nombre;
 /*5*/SELECT g.nombre AS grado, COUNT(asig.nombre) AS numero_asignaturas FROM grado AS g LEFT JOIN asignatura AS asig ON g.id = asig.id_grado GROUP BY g.nombre ORDER BY numero_asignaturas DESC;
 /*6*/SELECT g.nombre AS grado, COUNT(asig.nombre) AS numero_asignaturas FROM grado AS g LEFT JOIN asignatura AS asig ON g.id = asig.id_grado GROUP BY g.nombre HAVING numero_asignaturas > 40;
+/*9*/SELECT prof.id_profesor AS id, p.nombre, apellido1, apellido2, COUNT(asig.nombre) AS numero_asignaturas FROM persona AS p INNER JOIN profesor AS prof ON p.id = prof.id_profesor LEFT JOIN asignatura AS asig ON prof.id_profesor = asig.id_profesor GROUP BY prof.id_profesor ORDER BY numero_asignaturas DESC;
