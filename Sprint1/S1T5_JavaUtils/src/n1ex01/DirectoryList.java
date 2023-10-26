@@ -11,7 +11,7 @@ public class DirectoryList {
             String path = args[0];
             new DirectoryList().getListContent(path);
         } else {
-            System.out.println("Use: RecursiveDirectoryList.java directory_path");
+            System.out.println("Use: DirectoryList.java directory_path");
         }
     }
 

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 
 public class SerializationAndDeserialization {
-    static String savePath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T5_JavaUtils\\src\\n1ex05";
 
     public static void main(String[] args) {
 
@@ -24,7 +23,7 @@ public class SerializationAndDeserialization {
     }
 
     public static void serializeObject(ArrayList<ObjectSer> myObjects, String fileName) {
-        try (FileOutputStream fos = new FileOutputStream(savePath + "\\" + fileName);
+        try (FileOutputStream fos = new FileOutputStream(fileName);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(myObjects);
             oos.close();
@@ -39,7 +38,7 @@ public class SerializationAndDeserialization {
 
     public static void deserializeObject(String fileName) {
         System.out.println("Reading object...");
-        try (FileInputStream fis = new FileInputStream(savePath + "\\" + fileName);
+        try (FileInputStream fis = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fis)){
             ArrayList<ObjectSer> objectList = (ArrayList<ObjectSer>) ois.readObject();
             ois.close();
