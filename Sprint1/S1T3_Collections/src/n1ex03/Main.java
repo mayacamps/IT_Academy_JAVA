@@ -5,7 +5,6 @@ import java.util.*;
 
 public class Main{
     static Scanner sc = new Scanner(System.in);
-    static String workingPath = "C:\\Users\\lluisa\\IdeaProjects\\ITAcademy_JAVA\\Sprint1\\S1T3_Collections\\src\\n1ex03";
     public static void main(String[] args) {
         playGame();
     }
@@ -16,7 +15,7 @@ public class Main{
         String line = null;
 
         try {
-            bufRead = new BufferedReader(new FileReader(workingPath + "\\countries.txt"));
+            bufRead = new BufferedReader(new FileReader( "Sprint1/S1T3_Collections/src/n1ex03/countries.txt"));
 
             line = bufRead.readLine();
 
@@ -59,7 +58,7 @@ public class Main{
     }
 
     public static void createResultFile(String name, int score){
-        try (PrintWriter writer = new PrintWriter(new FileWriter(workingPath + "\\classification.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Sprint1/S1T3_Collections/src/n1ex03/countries.txt"))) {
             writer.write(name + " has scored " + score + " points");
             writer.close();
             System.out.println("You have scored " + score + " points.\n" +
