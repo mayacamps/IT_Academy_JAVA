@@ -26,21 +26,13 @@ public class Sale {
 		this.totalPrice = totalPrice;
 	}	
 
-	public int calcTotal(){
-		try {
-			try {
-				if (products.size() == 0) {
-					throw new ArrayIndexOutOfBoundsException();
-				} else {
-					for (int i = 0; i < products.size(); i++) {
-						totalPrice += products.get(i).getPrice();
-					}
-				}
-			} catch (ArrayIndexOutOfBoundsException a) {
-				throw new EmptySaleException("To make a sale, you must add products first.");
-			}
-		} catch (EmptySaleException e) {
-			System.err.println("EmptySaleException: " + e.getMessage());
+	public int calcTotal() throws EmptySaleException {
+		if (products.size() == 0) {
+			throw new EmptySaleException("Empty Sale Exception");
+		} else {
+            for (Product product : products) {
+                totalPrice += product.getPrice();
+            }
 		}
 		return totalPrice;
 	}
