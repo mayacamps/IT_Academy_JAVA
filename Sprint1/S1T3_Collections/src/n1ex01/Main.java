@@ -30,12 +30,18 @@ public class Main {
         months.add(nov);
         months.add(dec);
 
-        months.add(7, new Month("August"));
-
-
+        System.out.println("Printing months without august: ");
         for (Month month : months){
             System.out.println(month.getName());
         }
+
+        months.add(7, new Month("August"));
+        System.out.println("\nPrinting months with august: ");
+        for (Month month : months){
+            System.out.println(month.getName());
+        }
+
+
 
         HashSet<Month> monthsHashSet = new LinkedHashSet<>(months);
         monthsHashSet.add(jan);
