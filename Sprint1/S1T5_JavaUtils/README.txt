@@ -10,5 +10,8 @@ To execute each exercise, in cmd change working directory to directory where fil
 - Exercise n1ex05: java SerializationAndDeserialization.java
 - Exercise n2ex01: java ConfigFileParametrization.java
 (This program will later ask you for the [directory_path]. Introduce it in the cmd when prompted).
+This last script will create two files:
+1. DirectoryListing.txt
+2. n2ex1.properties
 
 
