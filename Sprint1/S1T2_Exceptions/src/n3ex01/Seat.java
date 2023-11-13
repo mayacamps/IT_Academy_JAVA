@@ -31,7 +31,8 @@ public class Seat {
         Seat seat = (Seat) o;
         return rowNum == seat.rowNum && seatNum == seat.seatNum && Objects.equals(nameReserv, seat.nameReserv);
     }
-    
+
+    @Override
     public String toString(){
         return "Row: " + this.getRowNum() +
                 ", Seat: " + this.getSeatNum() +
