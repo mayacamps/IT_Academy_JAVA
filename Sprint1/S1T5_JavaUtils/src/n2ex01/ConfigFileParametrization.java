@@ -58,6 +58,7 @@ public class ConfigFileParametrization {
         }
 
 //      READING PROPERTIES FILE
+        System.out.println("\nReading properties file: ");
         Properties prop = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         InputStream stream = loader.getResourceAsStream("n2ex1.properties");
