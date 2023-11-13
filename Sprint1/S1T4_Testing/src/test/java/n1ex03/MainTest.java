@@ -9,7 +9,8 @@ class MainTest {
     public void testException(){
         assertThrows(ArrayIndexOutOfBoundsException.class, () ->{
             Main test = new Main();
-            test.generatorArrayIndexOutOfBounds();
+            int [] numbers = {1, 2, 3, 4};
+            test.getElementFromArray(numbers, 5);
         } );
     }
 }
