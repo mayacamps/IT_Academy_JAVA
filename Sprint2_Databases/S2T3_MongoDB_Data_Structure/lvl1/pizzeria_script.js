@@ -2,7 +2,7 @@
 db.createCollection( 'client', {validator: {$jsonSchema: {bsonType: 'object',title:'client',required: [         'name',          'surname',          'address',          'zipcode',          'phone',          'locality_id',          'order'],properties: {name: {bsonType: 'string'},surname: {bsonType: 'string'},address: {bsonType: 'string'},zipcode: {bsonType: 'int'},phone: {bsonType: 'string'},locality_id: {bsonType: 'objectId'},order: {bsonType: 'array',items: {
 title:'object',required: [         'date_time',          'type',          'total_price',          'products'],properties: {date_time: {bsonType: 'timestamp'},type: {enum: ['delivery', 'pick-up']},total_price: {bsonType: 'double'},products: {bsonType: 'array',items: {
 title:'object',required: [         'quant_products',          'id_product'],properties: {quant_products: {bsonType: 'int'},id_product: {bsonType: 'objectId'}}}},delivery: {bsonType: 'object',
-title:'object',properties: {datetime: {bsonType: 'timestamp'},id_employee: {bsonType: 'objectId'}}}}}}}         }      },
+title:'object',required: [         'datetime',          'id_employee'],properties: {datetime: {bsonType: 'timestamp'},id_employee: {bsonType: 'objectId'}}}}}}}         }      },
 autoIndexId:true
 });  
 
