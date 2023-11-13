@@ -1,44 +1,44 @@
 package n1ex01;
 
 public class NoGenericMethods<T> {
-    private T t1;
-    private T t2;
-    private T t3;
+    private String a;
+    private String b;
+    private String c;
 
-    public NoGenericMethods(T t1, T t2, T t3){
-        this.t1 = t1;
-        this.t2 = t2;
-        this.t3 = t3;
+    public NoGenericMethods(String a, String b, String c){
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
-    public T getT1() {
-        return t1;
+    public String geta() {
+        return a;
     }
 
-    public void setT1(T t1) {
-        this.t1 = t1;
+    public void seta(String a) {
+        this.a = a;
     }
 
-    public T getT2() {
-        return t2;
+    public String getb() {
+        return b;
     }
 
-    public void setT2(T t2) {
-        this.t2 = t2;
+    public void setb(String b) {
+        this.b = b;
     }
 
-    public T getT3() {
-        return t3;
+    public String getc() {
+        return c;
     }
 
-    public void setT3(T t3) {
-        this.t3 = t3;
+    public void setc(String c) {
+        this.c = c;
     }
 
     @Override
     public String toString(){
-        return "Object 1: " + t1 + "\n" +
-                "Object 2: "  + t2 + "\n" +
-                "Object 3: " + t3 + "\n";
+        return "Object 1: " + a + "\n" +
+                "Object 2: "  + b + "\n" +
+                "Object 3: " + c + "\n";
     }
 }
