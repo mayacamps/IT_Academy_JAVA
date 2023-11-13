@@ -3,7 +3,6 @@ package n2ex01;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import static n2ex01.Entry.readYesNo;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class Main {
         do {
             try{
                 createRestaurant(restaurants);
-                isEnough = !readYesNo("Do you want to add another restaurant? (y/n)");
+                isEnough = !Entry.readYesNo("Do you want to add another restaurant? (y/n)");
             } catch (InputMismatchException e){
                 System.err.println("Format error." + e.getMessage());
                 sc.nextLine();

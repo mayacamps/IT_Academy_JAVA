@@ -1,7 +1,6 @@
 package n2ex02;
 
 import n2ex01.Restaurant;
-import static n2ex01.Entry.readYesNo;
 import java.util.*;
 
 public class Main {
@@ -15,7 +14,7 @@ public class Main {
         do {
             try{
                 createRestaurant(restaurants);
-                isEnough = !readYesNo("Do you want to add another restaurant? (y/n)");
+                isEnough = !Entry.readYesNo("Do you want to add another restaurant? (y/n)");
             } catch (InputMismatchException e){
                 System.err.println("Format error." + e.getMessage());
                 sc.nextLine();
