@@ -14,6 +14,7 @@ public class InPersonWorker extends Worker {
     }
 
     @Deprecated
+    @SuppressWarnings("deprecation")
     public void deprecatedMethod(){
         System.out.println("This is an obsolete method in InPersonWorker class.");
     }
