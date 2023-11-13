@@ -138,19 +138,18 @@ public class Cinema {
     }
     public int introduceRow() throws IncorrectRowException {
         int rowNum = Entry.readInt("Introduce the row number");
-
-        if (rowNum >= 1 && rowNum <= this.numRows){
-            return rowNum;
+        if (rowNum < 1 | rowNum > this.numRows) {
+            throw new IncorrectRowException();
         }
-        throw new IncorrectRowException();
+        return rowNum;
     }
 
     public int introduceSeat() throws IncorrectSeatException {
         int seatNum = Entry.readInt("Introduce the seat number");
-        if (seatNum >= 1 && seatNum <= this.numSeatsRow){
-            return seatNum;
+        if (seatNum < 1 | seatNum > this.numSeatsRow){
+            throw new IncorrectSeatException();
         }
-        throw new IncorrectSeatException();
+        return seatNum;
     }
 
     public void getInitialData(){
