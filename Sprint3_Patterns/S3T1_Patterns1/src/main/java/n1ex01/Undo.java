@@ -4,19 +4,12 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class Undo {
-    private static Undo instance;
+public enum Undo {
+    INSTANCE;
     ArrayList<String> commands;
 
     private Undo(){
         commands = new ArrayList<>();
-    }
-
-    public static Undo getInstance(){
-        if (instance == null){
-            instance = new Undo();
-        }
-        return instance;
     }
 
     public void addCommand(Scanner entry){
@@ -66,7 +59,9 @@ public final class Undo {
 
             quantCommands = entry.nextInt();
             if (quantCommands > commands.size()){
-                System.out.println("You cannot retrieve " + quantCommands + " commands. There are " + commands.size() + " commands.");
+                System.out.println("You cannot retrieve " + quantCommands + " commands. There are " + commands.size() + " commands.\n");
+            } else if (quantCommands < 0){
+                System.out.println("Please introduce a valid value.\n");
             }
 
         } while (quantCommands == -1 | quantCommands > commands.size());

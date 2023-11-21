@@ -7,7 +7,7 @@ public class Main {
     static Scanner entry = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Undo undo = Undo.getInstance();
+        Undo undo = Undo.INSTANCE;
         int menuOpt = -1;
 
         do {
