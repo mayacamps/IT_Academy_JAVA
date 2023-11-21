@@ -54,7 +54,7 @@ public final class Undo {
         return -1;
     }
 
-    public void listLastCommands(Scanner entry){
+    public void listLastCommands(Scanner entry) throws InputMismatchException {
         if (commands.isEmpty()) {
             System.out.println("Can't list commands. Command history is empty.\n");
             return;
@@ -63,16 +63,12 @@ public final class Undo {
         int quantCommands = 0;
         do {
             System.out.println("How many last commands do you want to see?");
-            try {
-                quantCommands = entry.nextInt();
-                if (quantCommands > commands.size()){
-                    System.out.println("You cannot retrieve " + quantCommands + " commands. There are " + commands.size() + " commands.");
-                }
-            } catch (InputMismatchException e) {
-                quantCommands = -1;
-                entry.nextLine();
-                System.out.println("Introduce a valid option.\n");
+
+            quantCommands = entry.nextInt();
+            if (quantCommands > commands.size()){
+                System.out.println("You cannot retrieve " + quantCommands + " commands. There are " + commands.size() + " commands.");
             }
+
         } while (quantCommands == -1 | quantCommands > commands.size());
 
         int startInd = commands.size() - quantCommands;

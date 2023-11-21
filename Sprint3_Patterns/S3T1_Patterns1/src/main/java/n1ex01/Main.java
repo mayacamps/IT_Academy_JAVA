@@ -8,27 +8,29 @@ public class Main {
 
     public static void main(String[] args) {
         Undo undo = Undo.getInstance();
-        int menuOpt;
+        int menuOpt = -1;
 
         do {
-            System.out.println("Command option menu:" +
-                    "\n1. Add command" +
-                    "\n2. Delete command" +
-                    "\n3. List last commands" +
-                    "\n0. Exit");
-            try {
-                menuOpt = entry.nextInt();
-            } catch (InputMismatchException e){
-                menuOpt = -1;
-            }
-            entry.nextLine();
+            try{
+                System.out.println("Command option menu:" +
+                        "\n1. Add command" +
+                        "\n2. Delete command" +
+                        "\n3. List last commands" +
+                        "\n0. Exit");
 
-            switch (menuOpt){
-                case 1 -> undo.addCommand(entry);
-                case 2 -> undo.deleteCommand(entry);
-                case 3 -> undo.listLastCommands(entry);
-                case 0 -> System.out.println("Bye!");
-                default -> System.out.println("Please introduce a valid value.\n");
+                menuOpt = entry.nextInt();
+                entry.nextLine();
+
+                switch (menuOpt){
+                    case 1 -> undo.addCommand(entry);
+                    case 2 -> undo.deleteCommand(entry);
+                    case 3 -> undo.listLastCommands(entry);
+                    case 0 -> System.out.println("Bye!");
+                    default -> System.err.println("Please introduce a valid value.\n");
+                }
+            } catch (InputMismatchException e){
+                entry.nextLine();
+                System.err.println("Wrong format input. Please introduce a valid value.\n");
             }
         } while (menuOpt != 0);
     }
